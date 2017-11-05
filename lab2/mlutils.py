@@ -7,7 +7,7 @@ def plot_2d_clf_problem(X, y, h=None):
     the decision surfaces.
     '''
     assert X.shape[1] == 2, "Dataset is not two-dimensional"
-    if h!=None : 
+    if h is not None: 
         # Create a mesh to plot in
         r = 0.02  # mesh resolution
         x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
@@ -22,7 +22,7 @@ def plot_2d_clf_problem(X, y, h=None):
                 Z = np.array(list(map(h,XX)))
             else :
                 Z = Z_test
-        except ValueError:
+        except (ValueError, TypeError):
             # can't apply to a matrix; map explicitly
             Z = np.array(list(map(h,XX)))
         # Put the result into a color plot
